@@ -119,9 +119,6 @@ git push origin feature/YourFeatureName
 1. Go to your forked repository.
 2. Click on "New Pull Request" and submit your changes for review.
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Acknowledgments
 - Expo Documentation
