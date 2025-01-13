@@ -12,7 +12,7 @@ export default function VideoItem({ video, onPress, onEdit, onDelete }) {
             </View>
             <View style={styles.buttonContainer}>
                 <Button title="Düzenle" onPress={onEdit} />
-                <Button title="Sil" onPress={onDelete} color="red" />
+                {/* <Button title="Sil" onPress={onDelete} color="red" /> --This button is in the comments section because it is not working until the next update.---*/}
             </View>
         </TouchableOpacity>
     );
