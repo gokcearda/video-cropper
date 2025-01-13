@@ -9,7 +9,6 @@ A React Native Video Diary App that allows users to import videos, crop 5-second
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
 ## Features
