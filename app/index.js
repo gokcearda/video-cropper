@@ -1,7 +1,7 @@
 // app/index.js
 
 import React, { useEffect } from 'react';
-import { View, FlatList, Button, Text } from 'react-native';
+import { View, FlatList, Text, TouchableOpacity, Alert } from 'react-native';
 import VideoItem from '../src/components/VideoItem';
 import { useVideoStore } from '../src/store/videStore';
 import { useRouter } from 'expo-router';
@@ -29,9 +29,9 @@ export default function HomeScreen() {
     };
 
     return (
-        <View style={{ flex: 1 }}>
+        <View className="flex-1">
             {videos.length === 0 ? (
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <View className="flex-1 justify-center items-center">
                     <Text>Henüz video eklemediniz.</Text>
                 </View>
             ) : (
@@ -48,10 +48,15 @@ export default function HomeScreen() {
                     )}
                 />
             )}
-            <Button
-                title="Video Ekle"
+            <TouchableOpacity
                 onPress={() => router.push('/modal/crop')}
-            />
+                className="bg-blue-500 rounded-full px-6 py-4 m-4"
+                activeOpacity={0.8}
+            >
+                <Text className="text-white text-center text-lg font-semibold">
+                    Video Ekle
+                </Text>
+            </TouchableOpacity>
         </View>
     );
 }

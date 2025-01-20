@@ -1,7 +1,9 @@
 // src/components/VideoPlayer.js
 import React from 'react';
 import { Video } from 'expo-av';
-import { StyleSheet } from 'react-native';
+import { styled } from 'nativewind';
+
+const StyledVideo = styled(Video);
 
 export default function VideoPlayer({ uri, onLoad, startTime = 0 }) {
     if (!uri) {
@@ -10,9 +12,9 @@ export default function VideoPlayer({ uri, onLoad, startTime = 0 }) {
     }
 
     return (
-        <Video
+        <StyledVideo
             source={{ uri }}
-            style={styles.video}
+            className="w-full h-[200px]"
             onLoad={onLoad}
             positionMillis={startTime * 1000}
             shouldPlay
@@ -22,10 +24,3 @@ export default function VideoPlayer({ uri, onLoad, startTime = 0 }) {
         />
     );
 }
-
-const styles = StyleSheet.create({
-    video: {
-        width: '100%',
-        height: 200,
-    },
-});

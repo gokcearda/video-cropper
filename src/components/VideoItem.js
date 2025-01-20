@@ -1,41 +1,23 @@
 // src/components/VideoItem.js
 
 import React from 'react';
-import { View, Text, TouchableOpacity, Button, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 export default function VideoItem({ video, onPress, onEdit, onDelete }) {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.container}>
+        <TouchableOpacity onPress={onPress} className="p-4 border-b border-gray-300">
             <View>
-                <Text style={styles.title}>{video.name}</Text>
-                <Text style={styles.description}>{video.description}</Text>
+                <Text className="text-lg font-bold">{video.name}</Text>
+                <Text className="mt-1 text-sm text-gray-600">{video.description}</Text>
             </View>
-            <View style={styles.buttonContainer}>
-                <Button title="Düzenle" onPress={onEdit} />
-                {/* <Button title="Sil" onPress={onDelete} color="red" /> --This button is in the comments section because it is not working until the next update.---*/}
+            <View className="flex-row mt-2 justify-between">
+                <TouchableOpacity onPress={onEdit} className="bg-blue-500 rounded px-4 py-2">
+                    <Text className="text-white font-semibold">Düzenle</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onDelete} className="bg-red-500 rounded px-4 py-2">
+                    <Text className="text-white font-semibold">Sil</Text>
+                </TouchableOpacity>
             </View>
         </TouchableOpacity>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 16,
-        borderBottomWidth: 1,
-        borderColor: '#ccc',
-    },
-    title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    description: {
-        marginTop: 4,
-        fontSize: 14,
-        color: '#666',
-    },
-    buttonContainer: {
-        flexDirection: 'row',
-        marginTop: 8,
-        justifyContent: 'space-between',
-    },
-});

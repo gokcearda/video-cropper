@@ -1,7 +1,7 @@
 // app/edit/[videoId].js
 
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, Alert } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useVideoStore } from '../../src/store/videStore';
 
@@ -32,38 +32,24 @@ export default function EditVideoScreen() {
     };
 
     return (
-        <View style={styles.container}>
+        <View className="p-4">
             <TextInput
                 placeholder="İsim"
                 value={name}
                 onChangeText={setName}
-                style={styles.input}
+                className="border border-gray-400 rounded p-2 mb-3"
             />
             <TextInput
                 placeholder="Açıklama"
                 value={description}
                 onChangeText={setDescription}
                 multiline
-                style={[styles.input, styles.textArea]}
+                className="border border-gray-400 rounded p-2 mb-3 h-[100px]"
+                style={{ textAlignVertical: 'top' }}
             />
-            <Button title="Kaydet" onPress={handleSave} />
+            <TouchableOpacity onPress={handleSave} className="bg-blue-500 rounded p-2 mt-2">
+                <Text className="text-white text-center font-semibold">Kaydet</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 16,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 4,
-        padding: 8,
-        marginBottom: 12,
-    },
-    textArea: {
-        height: 100,
-        textAlignVertical: 'top',
-    },
-});

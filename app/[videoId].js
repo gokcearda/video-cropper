@@ -1,6 +1,6 @@
 // app/[videoId].js
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useVideoStore } from '../src/store/videStore';
 import VideoPlayer from '../src/components/VideoPlayer';
@@ -13,48 +13,21 @@ export default function DetailScreen() {
 
     if (!video) {
         return (
-            <View style={styles.centered}>
+            <View className="flex-1 justify-center items-center">
                 <Text>Video bulunamadı.</Text>
             </View>
         );
     }
 
     return (
-        <View style={styles.container}>
-            <VideoPlayer uri={video.uri} />
-            <View style={styles.infoContainer}>
-                <Text style={styles.title}>{video.name}</Text>
-                <Text style={styles.description}>{video.description}</Text>
+        <View className="flex-1 bg-white">
+            <View className="w-full h-[300px]">
+                <VideoPlayer uri={video.uri} />
+            </View>
+            <View className="p-4">
+                <Text className="text-2xl font-bold mb-2">{video.name}</Text>
+                <Text className="text-base text-gray-600 leading-6">{video.description}</Text>
             </View>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#FFFFFF',
-    },
-    video: {
-        width: '100%',
-        height: 300,
-    },
-    infoContainer: {
-        padding: 16,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 8,
-    },
-    description: {
-        fontSize: 16,
-        color: '#555555',
-        lineHeight: 24,
-    },
-    centered: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});

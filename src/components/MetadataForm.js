@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import { metadataSchema } from '../utils/validationSchema';
 
 export default function MetadataForm({ onSubmit, isSubmitting }) {
@@ -22,50 +22,36 @@ export default function MetadataForm({ onSubmit, isSubmitting }) {
     };
 
     return (
-        <View style={styles.container}>
+        <View className="p-4">
             <TextInput
                 placeholder="İsim"
                 value={name}
                 onChangeText={setName}
-                style={styles.input}
+                className="border border-gray-400 rounded p-2 mb-3"
             />
-            {errors.name && <Text style={styles.errorText}>{errors.name}</Text>}
+            {errors.name && <Text className="text-red-500 mb-2">{errors.name}</Text>}
             <TextInput
                 placeholder="Açıklama"
                 value={description}
                 onChangeText={setDescription}
                 multiline
-                style={[styles.input, styles.textArea]}
+                className="border border-gray-400 rounded p-2 mb-3 h-[100px]"
+                style={{ textAlignVertical: 'top' }}
             />
             {errors.description && (
-                <Text style={styles.errorText}>{errors.description}</Text>
+                <Text className="text-red-500 mb-2">{errors.description}</Text>
             )}
-            <Button
-                title={isSubmitting ? 'Kaydediliyor...' : 'Kaydet'}
+            <TouchableOpacity
                 onPress={handleSubmit}
                 disabled={isSubmitting}
-            />
+                className={`bg-blue-500 rounded p-3 mt-2 ${
+                    isSubmitting ? 'opacity-50' : ''
+                }`}
+            >
+                <Text className="text-white text-center font-semibold">
+                    {isSubmitting ? 'Kaydediliyor...' : 'Kaydet'}
+                </Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 16,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 4,
-        padding: 8,
-        marginBottom: 12,
-    },
-    textArea: {
-        height: 100,
-        textAlignVertical: 'top',
-    },
-    errorText: {
-        color: 'red',
-        marginBottom: 8,
-    },
-});

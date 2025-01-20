@@ -1,6 +1,6 @@
 // src/components/VideoPicker.js
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function VideoPicker({ onSelect }) {
@@ -28,8 +28,14 @@ export default function VideoPicker({ onSelect }) {
     };
 
     return (
-        <View>
-            <Button title="Video Seç" onPress={pickVideo} />
+        <View className="justify-center items-center bg-white">
+            <TouchableOpacity
+                onPress={pickVideo}
+                className="bg-blue-50 rounded-full px-6 py-3 shadow-lg"
+                activeOpacity={0.8}
+            >
+                <Text className="text-white text-lg font-bold">Video Seç</Text>
+            </TouchableOpacity>
         </View>
     );
 }

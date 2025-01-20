@@ -57,20 +57,26 @@ export default function CropModal() {
     };
 
     return (
-        <View style={{ flex: 1 }}>
-            {step === 1 && <VideoPicker onSelect={handleVideoSelect} />}
+        <View className="flex-1">
+            {step === 1 && (
+                    <VideoPicker onSelect={handleVideoSelect} />
+            )}
             {step === 2 && (
-                <CropScrubber
-                    video={selectedVideo}
-                    onCropSettingsChange={handleCropSettings}
-                    isSubmitting={isSubmitting}
-                />
+                <View className="flex-1">
+                    <CropScrubber
+                        video={selectedVideo}
+                        onCropSettingsChange={handleCropSettings}
+                        isSubmitting={isSubmitting}
+                    />
+                </View>
             )}
             {step === 3 && (
-                <MetadataForm
-                    onSubmit={handleMetadataSubmit}
-                    isSubmitting={isSubmitting}
-                />
+                <View className="flex-1">
+                    <MetadataForm
+                        onSubmit={handleMetadataSubmit}
+                        isSubmitting={isSubmitting}
+                    />
+                </View>
             )}
         </View>
     );

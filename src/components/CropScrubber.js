@@ -1,6 +1,6 @@
 // src/components/CropScrubber.js
 import React, { useState } from 'react';
-import { View, Button, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Slider from '@react-native-community/slider';
 import VideoPlayer from './VideoPlayer';
 
@@ -20,9 +20,9 @@ export default function CropScrubber({ video, onCropSettingsChange }) {
     };
 
     return (
-        <View style={{ flex: 1, padding: 16 }}>
+        <View className="flex-1 p-4">
             <VideoPlayer uri={video} onLoad={handleLoad} startTime={startTime} />
-            <Text>Başlangıç Zamanı: {startTime.toFixed(2)} sn</Text>
+            <Text className="mt-4 mb-2">Başlangıç Zamanı: {startTime.toFixed(2)} sn</Text>
             <Slider
                 style={{ width: '100%', height: 40 }}
                 minimumValue={0}
@@ -30,7 +30,12 @@ export default function CropScrubber({ video, onCropSettingsChange }) {
                 value={startTime}
                 onValueChange={setStartTime}
             />
-            <Button title="Devam Et" onPress={handleNext} />
+            <TouchableOpacity
+                onPress={handleNext}
+                className="mt-4 bg-blue-500 rounded p-3"
+            >
+                <Text className="text-white text-center font-semibold">Devam Et</Text>
+            </TouchableOpacity>
         </View>
     );
 }
